@@ -1,17 +1,27 @@
-import { Geist, Geist_Mono, Outfit, Oxanium } from "next/font/google"
+import type { Metadata } from "next"
+import { Cormorant_Garamond, Figtree } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
-import { cn } from "@/lib/utils";
+import { cn } from "@/lib/utils"
+import { site } from "@/lib/site"
 
-const oxaniumHeading = Oxanium({subsets:['latin'],variable:'--font-heading'});
-
-const outfit = Outfit({subsets:['latin'],variable:'--font-sans'})
-
-const fontMono = Geist_Mono({
+const heading = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-mono",
+  weight: ["400", "500", "600"],
+  variable: "--font-heading",
 })
+
+const sans = Figtree({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
+
+export const metadata: Metadata = {
+  title: `${site.name} — Photographer`,
+  description:
+    "Portfolio of Jiung Kim — portraits, travel, and editorial photography.",
+}
 
 export default function RootLayout({
   children,
@@ -22,10 +32,12 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={cn("antialiased", fontMono.variable, "font-sans", outfit.variable, oxaniumHeading.variable)}
+      className={cn("antialiased", "font-sans", sans.variable, heading.variable)}
     >
       <body>
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider defaultTheme="light" enableSystem={false}>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   )

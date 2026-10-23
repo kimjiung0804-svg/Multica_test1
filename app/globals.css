@@ -5,14 +5,14 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-    --background: oklch(1 0 0);
-    --foreground: oklch(0.147 0.004 49.25);
-    --card: oklch(1 0 0);
-    --card-foreground: oklch(0.147 0.004 49.25);
-    --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.147 0.004 49.25);
-    --primary: oklch(0.553 0.195 38.402);
-    --primary-foreground: oklch(0.98 0.016 73.684);
+    --background: oklch(0.985 0.002 95);
+    --foreground: oklch(0.22 0.01 70);
+    --card: oklch(0.985 0.002 95);
+    --card-foreground: oklch(0.22 0.01 70);
+    --popover: oklch(0.985 0.002 95);
+    --popover-foreground: oklch(0.22 0.01 70);
+    --primary: oklch(0.28 0.012 70);
+    --primary-foreground: oklch(0.98 0.002 95);
     --secondary: oklch(0.967 0.001 286.375);
     --secondary-foreground: oklch(0.21 0.006 285.885);
     --muted: oklch(0.97 0.001 106.424);
@@ -127,6 +127,37 @@
     cursor: pointer;
     }
   html {
-    @apply font-sans;
+    @apply font-sans scroll-smooth;
     }
+  .font-heading {
+    font-family: var(--font-heading), ui-serif, Georgia, serif;
+  }
+}
+
+@keyframes hero-ken {
+  from {
+    transform: scale(1.06);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-hero-ken {
+  animation: hero-ken 12s ease-out forwards;
+}
+
+@utility animate-fade-up {
+  animation: fade-up 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
